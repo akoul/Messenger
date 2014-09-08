@@ -1,0 +1,36 @@
+package networking;
+import java.io.*;
+import java.net.*;
+import java.util.Scanner;
+
+class chat_client
+{
+	public static void main(String args[]) throws UnknownHostException, IOException
+	{
+		Socket s=new Socket("127.0.0.1",1235);   //This is local host IP Address. Put IP address of other machine u want to chat with.
+		OutputStream o=s.getOutputStream();
+		InputStream i=s.getInputStream();
+		PrintStream ps=new PrintStream(o);
+		Scanner sc =new Scanner(System.in);
+		BufferedReader buf=new BufferedReader(new InputStreamReader(i));
+		
+		String str;
+		String str1;
+		
+		do
+		{
+			str=sc.next();
+			ps.println(str);
+			str1=buf.readLine();
+			System.out.println(str1);
+		}while(!(str.equals("bye")));
+		sc.close();
+		ps.close();
+		i.close();
+		o.close();
+		s.close();
+		System.out.println("Connection closed");
+		
+		
+	 }
+}
