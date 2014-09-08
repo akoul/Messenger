@@ -1,0 +1,36 @@
+package networking;
+import java.io.*;
+import java.net.*;
+import java.util.Scanner;
+
+class chat_server 
+{
+	public static void main(String args[]) throws IOException
+	{
+		ServerSocket ser=new ServerSocket(1235);
+		Socket cli=ser.accept();
+		System.out.println("Connection Established.Type bye to end conversation");
+		OutputStream o=cli.getOutputStream();
+		InputStream i=cli.getInputStream();
+		PrintStream ps=new PrintStream(o);
+		Scanner s =new Scanner(System.in);
+		BufferedReader buf=new BufferedReader(new InputStreamReader(i));
+		 
+		String str;
+		String str1;
+		do
+		{
+			str=buf.readLine();
+			System.out.println(str);
+			str1=s.next();
+	        ps.println(str1);	
+			
+		}while(!(str1.equals("bye")));
+		ps.close();
+		i.close();
+		o.close();
+		cli.close();
+		ser.close();
+		System.out.println("Connection closed");
+	}
+}
