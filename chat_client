@@ -17,6 +17,9 @@ class chat_client
 		String str;
 		String str1;
 		
+		String pass = "password";
+		String api_key = "test_api_key"
+		
 		do
 		{
 			str=sc.next();
