@@ -19,6 +19,7 @@ class chat_client
 		
 		String pass = "password";
 		String api_key = "test_api_key"
+		String access_token = "ezJ9eXAiOiJRV1QiLKJhbGciOiXSUzI1NiIsJmp0aSI6IjFxYjNmZWY0YTk5MmU3ZDKm"
 		
 		do
 		{
